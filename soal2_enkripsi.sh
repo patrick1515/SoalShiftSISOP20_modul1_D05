@@ -5,12 +5,12 @@ for ((i = 1; i <= 28 ; i++)) do
         rand=$[$RANDOM%${#char[@]}]
         password="${password}${char[$rand]}"
 done
+echo $password> $1
 
 jam=$(date +"%H")
 low=(abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz)
 up=(ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ)
+x=$(echo $1|grep -oP  '.*(?=\.txt)')
 
-x=$(echo $1|grep -oP '.*(?=\.txt)')
 namabaru=$(echo $x|tr ${low:0:26}${up:0:26} ${low:$jam:26}${up:$jam:26})
-
-echo $password>$namabaru  
+mv $1 $namabaru".txt"
