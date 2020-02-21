@@ -15,8 +15,8 @@ sama seperti 1a dan 1b dimana fungsi itu yang membedakan adaalh bahwa funsi yang
 2. Soal No 2
 - 2.a & b 
 Generating password menggunakan perulangan array of char sehingga bisa membentuk password sepanjang 28 character.
-  - rand=$[$RANDOM%${#char[@]}] untuk randomize isi char yang akan dikeluarkan
-  - echo $password> $1 untuk memasukkan password ke file .txt yang dibuat
+  - ```rand=$[$RANDOM%${#char[@]}]``` untuk randomize isi char yang akan dikeluarkan
+  - ```echo $password> $1``` untuk memasukkan password ke file .txt yang dibuat
 - 2.c 
 Mengenkripsi file.txt yang dibuat sebelumnya dengan berdasarkan jam pembuatan. Menggunakan fungsi grep untuk menghilangkan .txt dari argumen awal yang dimasukkan agar nama file bisa diganti tanpa mengganti .txt nya. Hal ini mengharuskan kita declare variabel jam agar bisa dijadikan parameter pengubahan nama file berdasarkan jam pembuatan.
   - ```grep -oP  '.*(?=\.txt)')``` untuk exclude .txt 
