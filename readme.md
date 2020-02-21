@@ -15,15 +15,15 @@ sama seperti 1a dan 1b dimana fungsi itu yang membedakan adaalh bahwa funsi yang
 2. Soal No 2
 - 2.a & b 
 Generating password menggunakan perulangan array of char sehingga bisa membentuk password sepanjang 28 character.
- - rand=$[$RANDOM%${#char[@]}] untuk randomize isi char yang akan dikeluarkan
- - echo $password> $1 untuk memasukkan password ke file .txt yang dibuat
+  - rand=$[$RANDOM%${#char[@]}] untuk randomize isi char yang akan dikeluarkan
+  - echo $password> $1 untuk memasukkan password ke file .txt yang dibuat
 - 2.c 
 Mengenkripsi file.txt yang dibuat sebelumnya dengan berdasarkan jam pembuatan. Menggunakan fungsi grep untuk menghilangkan .txt dari argumen awal yang dimasukkan agar nama file bisa diganti tanpa mengganti .txt nya. Hal ini mengharuskan kita declare variabel jam agar bisa dijadikan parameter pengubahan nama file berdasarkan jam pembuatan.
- - ```grep -oP  '.*(?=\.txt)')``` untuk exclude .txt 
- - ```namabaru=$(echo $x|tr ${low:0:26}${up:0:26} ${low:$jam:26}${up:$jam:26})``` untuk conversion dari nama lama ke nama baru berdasarkan jam pembuatan
+  - ```grep -oP  '.*(?=\.txt)')``` untuk exclude .txt 
+  - ```namabaru=$(echo $x|tr ${low:0:26}${up:0:26} ${low:$jam:26}${up:$jam:26})``` untuk conversion dari nama lama ke nama baru berdasarkan jam pembuatan
 - 2.d 
 Mendekripsi file yang sudah dienkrip dengan cara cek perubahan yang sudah terjadi pada nama file. Cek posisi file dan mengembalikannya ke posisi semula
- - ```now=$(stat -c %y $1|grep -oP '(?<=[^ ] ).*(?=:.*:)')``` untuk mengambil jam dari file setelah termodifikasi
- - ```back=$(echo "${1%.txt}"|tr ${low:$now:26}${up:$now:26} ${low:0:26}${up:0:26})``` untuk mengembalikan nama file ke posisi sebelumnya
+  - ```now=$(stat -c %y $1|grep -oP '(?<=[^ ] ).*(?=:.*:)')``` untuk mengambil jam dari file setelah termodifikasi
+  - ```back=$(echo "${1%.txt}"|tr ${low:$now:26}${up:$now:26} ${low:0:26}${up:0:26})``` untuk mengembalikan nama file ke posisi sebelumnya
 
 3. Nomor 3 masih belum selesai karena masih belum memahami penuh cara pengerjaannya menggunakan bash
