@@ -104,13 +104,21 @@ Generating password menggunakan perulangan array of char sehingga bisa membentuk
   - ```if [[ $1 =~ ^[a-zA-Z]+$ ]]``` Untuk cek apakah argumen nama file yang ingin dibuat mengandung huruf kecil atau huruf besar saja.
   - ```rand=$[$RANDOM%${#char[@]}]``` untuk randomize isi char yang akan dikeluarkan. Disini menggunakan 3 random karakter lagi karena untuk memenuhi syarat harus ada minimal 1 huruf kecil, 1 huruf besar, dan 1 angka.  
   - ```echo $password> $1.txt``` untuk memasukkan password ke file txt yang dibuat
+  
+ ![running soal 2a b](https://user-images.githubusercontent.com/61314890/75608594-815c7000-5b33-11ea-97ba-d1ae387959db.JPG)
+ 
 - 2.c 
 Mengenkripsi file.txt yang dibuat sebelumnya dengan berdasarkan jam pembuatan. Menggunakan fungsi grep untuk menghilangkan .txt dari argumen awal yang dimasukkan agar nama file bisa diganti tanpa mengganti .txt nya. Hal ini mengharuskan kita declare variabel jam agar bisa dijadikan parameter pengubahan nama file berdasarkan jam pembuatan.
   - ```grep -oP  '.*(?=\.txt)')``` untuk exclude .txt 
   - ```namabaru=$(echo $x|tr ${low:0:26}${up:0:26} ${low:$jam:26}${up:$jam:26})``` untuk conversion dari nama lama ke nama baru berdasarkan jam pembuatan
+  
+  ![running 2c](https://user-images.githubusercontent.com/61314890/75608593-802b4300-5b33-11ea-8e7e-5ea3c0755131.JPG)
+  
 - 2.d 
 Mendekripsi file yang sudah dienkrip dengan cara cek perubahan yang sudah terjadi pada nama file. Cek posisi file dan mengembalikannya ke posisi semula
   - ```now=$(stat -c %y $1|grep -oP '(?<=[^ ] ).*(?=:.*:)')``` untuk mengambil jam dari file setelah termodifikasi
   - ```back=$(echo "${1%.txt}"|tr ${low:$now:26}${up:$now:26} ${low:0:26}${up:0:26})``` untuk mengembalikan nama file ke posisi sebelumnya
-
+  
+  ![dekripsi 2d](https://user-images.githubusercontent.com/61314890/75608595-81f50680-5b33-11ea-9e45-e8775c3cc187.JPG)
+  
 3. Nomor 3 masih belum selesai karena masih belum memahami penuh cara pengerjaannya menggunakan bash
