@@ -22,19 +22,19 @@ awk -F"\t"  '$11 ~ /Texas/ || $11 ~ /Illinois/  {x[$17] += $21} END {for (a in x
 Dimana pada soal diminta menggunakan awk dan disitu untuk bisa dibaca perbarisnya menggunakan -F "\t"
 dan dibisa per tabnya lalu $13 dan $21 adalah untuk menggunakn tabel ke 13 dan 21 yaitu tabel region dan profit dan juga setelah diurutkan dan dijumlahkan menggunakan fungsi tersebut lalu file dipanggil dari tempat posisi file dan karena diminta dua tersedikit maka digunakan sort yang saya urutkan dari tertinggi pertama lalu ke terendah dan diambil nilai terbawah.
 
-```awk -F "\t"```  berfungsi sebagai separator dan ini akan megubahnya menjadi tab dan data akan dibaca perbaris
-```'{x[$13] += $21}END{for (a in x) {print x[a], a}}'```  dimana terdapat sebuah array idman indeksnya berada di baris ke 13 dan nilainya di baris ke 21 dan disana akan dilakukan perulangan dimana perulangan itu dilakukan bertujuan unutk menjumlah niali nay sesuai daat yang ada di region
-```/home/imanuel/Downloads/Sample-Superstore.tsv | sort -rg | tail -2 | head -1``` ini bertujuan unutk memanggil tempat data tersebut disimpan datang bertujuan untuk mengerutkan dari bawah keatas lalu diambil yang teratas
+   - ```awk -F "\t"```  berfungsi sebagai separator dan ini akan megubahnya menjadi tab dan data akan dibaca perbaris
+   - ```'{x[$13] += $21}END{for (a in x) {print x[a], a}}'```  dimana terdapat sebuah array idman indeksnya berada di baris ke 13 dan nilainya di baris ke 21 dan disana akan dilakukan perulangan dimana perulangan itu dilakukan bertujuan unutk menjumlah niali nay sesuai daat yang ada di region
+   - ```/home/imanuel/Downloads/Sample-Superstore.tsv | sort -rg | tail -2 | head -1``` ini bertujuan unutk memanggil tempat data tersebut disimpan datang bertujuan untuk mengerutkan dari bawah keatas lalu diambil yang teratas
 
 ![no1a](https://user-images.githubusercontent.com/61314890/75606535-4f8dde00-5b20-11ea-85db-54ffc46b9cf9.png)
 
 - 1.b 
 Untuk penjelasn satu b sama saperti 1a untuk formatnya yang membedakan bahwa fungsi yang dipanggil itu baris ke 11 yaitu state dan kerena hasil dari no1a adalah central maka itu diambil hanya central saja
 untuk soal b nya soal ini hanya berbeda di fungsi :
-```awk -F "\t"```  berfungsi sebagai separator dan ini akan mengubahnya menjadi tab dan data akan dibaca perbaris
-```'{x[$11] += $21}END{for (a in x) {print x[a], a}}'```  dimana terdapat sebuah array dimana indeksnya berada di baris ke 11 dan nilanya di baris ke 21 dan disana akan dilakukan perulangan dimana perulangan itu dilakukan bertujuan untuk menjumlah niali nay sesuai daat yang ada di region
-```/Central/ ``` dimana bertujuan unutk memanggil dat =a nilai region sentral saja dan yang lain tidak dianggap
-```/home/imanuel/Downloads/Sample-Superstore.tsv | sort -rg | tail -2 | head -1``` ini bertujuan unutk memanggil tempat data tersebut disimpan datang bertujuan untuk mengerutkan dari bawah keatas lalu diambil yang teratas
+   - ```awk -F "\t"```  berfungsi sebagai separator dan ini akan mengubahnya menjadi tab dan data akan dibaca perbaris
+   - ```'{x[$11] += $21}END{for (a in x) {print x[a], a}}'```  dimana terdapat sebuah array dimana indeksnya berada di baris ke 11 dan nilanya di baris ke 21 dan disana akan dilakukan perulangan dimana perulangan itu dilakukan bertujuan untuk menjumlah niali nay sesuai daat yang ada di region
+   - ```/Central/ ``` dimana bertujuan unutk memanggil dat =a nilai region sentral saja dan yang lain tidak dianggap
+   - ```/home/imanuel/Downloads/Sample-Superstore.tsv | sort -rg | tail -2 | head -1``` ini bertujuan unutk memanggil tempat data tersebut disimpan datang bertujuan untuk mengerutkan dari bawah keatas lalu diambil yang teratas
 
 ![1b](https://user-images.githubusercontent.com/61314890/75606544-6af8e900-5b20-11ea-9594-f6b5e81813ed.png)
 
@@ -43,16 +43,18 @@ untuk soal b nya soal ini hanya berbeda di fungsi :
 
 Sama seperti 1a dan 1b dimana fungsi itu yang membedakan adaalh bahwa fungsi yang dipanngil ada di baris ke 17 yaitu product name yang berdasarkan jawaban 1.b yaitu texas dan illinois juga berdasarkan 1a yaitu central
 untuk soal b nya soall ini hanya berbeda di fungsi :
-```awk -F "\t" ``` berfungsi sebagai separator dan ini akan megubahnya menjadi tab dan data akan dibaca perbaris
-```'$11 ~ /Texas/ || $11 ~ /Illinois/ ```dimana ini bertujuan unutk memanggil data dimana nilai yang diaambil hanya berdasarkan state texas dan illinois
-```{x[$17] += $21}``` dimana terdapat sebuah array yang indexnya berada di baris ke 17 dan nilanya di baris ke 
+   - ```awk -F "\t" ``` berfungsi sebagai separator dan ini akan megubahnya menjadi tab dan data akan dibaca perbaris
+   - ```'$11 ~ /Texas/ || $11 ~ /Illinois/ ```dimana ini bertujuan unutk memanggil data dimana nilai yang diaambil hanya berdasarkan state texas dan illinois
+   - ```{x[$17] += $21}``` dimana terdapat sebuah array yang indexnya berada di baris ke 17 dan nilanya di baris ke 
+   
+   ![1c](https://user-images.githubusercontent.com/61314890/75608718-bd440500-5b34-11ea-95e4-9852b16a7576.JPG)
 
 ### Kendala
+Disini kami berkendala di masalah penulisan source code dimana data yang saya tulis mengambil dari data row ke-17, padahal seharusnya diambil di row 11 dimana pada row 11 merupakan row dari Texas dan Illinois. 
 
 ### 2. Soal No 2
 ```bash
 #2a & 2b
-
 #!/bin/bash
 if [[ $1 =~ ^[a-zA-Z]+$ ]]
 then
@@ -76,7 +78,6 @@ else
 fi
 
 #2c
-
 #!/bin/bash
 
 now=$(stat -c %y $1 | grep -oP '(?<=[^ ] ).*(?=:.*:)')
@@ -87,7 +88,6 @@ namabaru=$(echo $x|tr ${low:0:26}${up:0:26} ${low:$now:26}${up:$now:26})
 mv $1 $namabaru".txt"
 
 #2d
-
 #!/bin/bash
 
 low=(abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz)
@@ -121,4 +121,48 @@ Mendekripsi file yang sudah dienkrip dengan cara cek perubahan yang sudah terjad
   
   ![dekripsi 2d](https://user-images.githubusercontent.com/61314890/75608595-81f50680-5b33-11ea-9e45-e8775c3cc187.JPG)
   
-3. Nomor 3 masih belum selesai karena masih belum memahami penuh cara pengerjaannya menggunakan bash
+### Kendala
+- Input filename seharusnya hanya berupa huruf kecil atau huruf besar saja dan tidak boleh angka ataupun special character, tapi yang saya masukkan masih bebas pada awalnya. Lalu setelah direvisi, sudah bisa sesuai dengan apa yang diminta
+- Password minimal harus ada 1 angka, 1 huruf kecil, 1 huruf besar. Tapi, pada awal pembuatan saya melakukan generate password tanpa memenuhi syarat yang diinginkan. Setelah direvisi, sudah bisa sesuai syarat
+- Enkripsi seharusnya mengikuti jam pembuatan file, bukan jam saat ini. Pada awalnya saya melakukan enkripsi menggunakan jam yang sekarang, namun setelah revisi sudah bisa dienkripsi sesuai jam pembuatan file.
+  
+### 3. Soal No. 3
+```bash
+#3a
+#!/bin/bash
+
+for ((i=1; i<=28;i++))
+do
+        wget -O pdkt_kusuma_$i.jpg https://loremflickr.com/320/240/cat -a wget.log
+done
+
+#3b
+5 6-23/8 * * 1-5,7 soal3.sh
+
+#3c
+#!/bin/bash
+
+grep "Location" wget.log > location.log
+readarray arr < location.log
+
+for i in {1..28}
+do
+        for j in {1..28}
+        do
+                if [ $i == $j ]
+                then
+                        continue
+                elif [ "${arr[$i]}" = "${arr[$j]}" ]
+                then
+                        mv pdkt_kusuma_$i ./duplicate/duplicate_$i
+                fi
+        done
+done
+for i in {1..28}
+do
+        mv pdkt_kusuma_$i ./kenangan/kenangan_$i
+done
+cp wget.log wget.log.bak
+```
+### Penjelasan
+### Kendala
