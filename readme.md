@@ -43,11 +43,11 @@ untuk soal b nya soal ini hanya berbeda di fungsi :
 
 Sama seperti 1a dan 1b dimana fungsi itu yang membedakan adaalh bahwa fungsi yang dipanngil ada di baris ke 17 yaitu product name yang berdasarkan jawaban 1.b yaitu texas dan illinois juga berdasarkan 1a yaitu central
 untuk soal b nya soall ini hanya berbeda di fungsi :
-   - ```awk -F "\t" ``` berfungsi sebagai separator dan ini akan megubahnya menjadi tab dan data akan dibaca perbaris
-   - ```'$11 ~ /Texas/ || $11 ~ /Illinois/ ```dimana ini bertujuan unutk memanggil data dimana nilai yang diaambil hanya berdasarkan state texas dan illinois
-   - ```{x[$17] += $21}``` dimana terdapat sebuah array yang indexnya berada di baris ke 17 dan nilanya di baris ke 21
-   - ```'{x[$17] += $21}END{for (a in x) {print x[a], a}}' ``` dimana terdapat sebuah array dimana indeksnya berada di baris ke 17 dan nilanya di baris ke 21 dan disana akan dilakukan perulangan dimana perulangan itu dilakukan bertujuan untuk menjumlah nilainya sesuai data yang ada di region
-   - ```/home/imanuel/Downloads/Sample-Superstore.tsv | sort -rg | tail -2 | head -1``` ini bertujuan unutk memanggil tempat data tersebut disimpan datang bertujuan untuk mengerutkan dari bawah keatas lalu diambil yang teratas
+     - ```awk -F "\t" ``` berfungsi sebagai separator dan ini akan megubahnya menjadi tab dan data akan dibaca perbaris
+     - ```'$11 ~ /Texas/ || $11 ~ /Illinois/ ```dimana ini bertujuan unutk memanggil data dimana nilai yang diaambil hanya berdasarkan state texas dan illinois
+     - ```{x[$17] += $21}``` dimana terdapat sebuah array yang indexnya berada di baris ke 17 dan nilanya di baris ke 21
+     - ```'{x[$17] += $21}END{for (a in x) {print x[a], a}}' ``` dimana terdapat sebuah array dimana indeksnya berada di baris ke 17 dan nilanya di baris ke 21 dan disana akan dilakukan perulangan dimana perulangan itu dilakukan bertujuan untuk menjumlah nilainya sesuai data yang ada di region
+     - ```/home/imanuel/Downloads/Sample-Superstore.tsv | sort -rg | tail -2 | head -1``` ini bertujuan unutk memanggil tempat data tersebut disimpan datang bertujuan untuk mengerutkan dari bawah keatas lalu diambil yang teratas
 
    
    ![1c](https://user-images.githubusercontent.com/61314890/75608718-bd440500-5b34-11ea-95e4-9852b16a7576.JPG)
