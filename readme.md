@@ -26,17 +26,17 @@ dan dibisa per tabnya lalu $13 dan $21 adalah untuk menggunakn tabel ke 13 dan 2
    - ```'{x[$13] += $21}END{for (a in x) {print x[a], a}}'```  dimana terdapat sebuah array idman indeksnya berada di baris ke 13 dan nilainya di baris ke 21 dan disana akan dilakukan perulangan dimana perulangan itu dilakukan bertujuan unutk menjumlah niali nay sesuai daat yang ada di region
    - ```/home/imanuel/Downloads/Sample-Superstore.tsv | sort -rg | tail -2 | head -1``` ini bertujuan unutk memanggil tempat data tersebut disimpan datang bertujuan untuk mengerutkan dari bawah keatas lalu diambil yang teratas
 
-![no1a](https://user-images.githubusercontent.com/61314890/75606535-4f8dde00-5b20-11ea-85db-54ffc46b9cf9.png)
+   ![no1a](https://user-images.githubusercontent.com/61314890/75606535-4f8dde00-5b20-11ea-85db-54ffc46b9cf9.png)
 
 - 1.b 
 Untuk penjelasn satu b sama saperti 1a untuk formatnya yang membedakan bahwa fungsi yang dipanggil itu baris ke 11 yaitu state dan kerena hasil dari no1a adalah central maka itu diambil hanya central saja
 untuk soal b nya soal ini hanya berbeda di fungsi :
    - ```awk -F "\t"```  berfungsi sebagai separator dan ini akan mengubahnya menjadi tab dan data akan dibaca perbaris
-   - ```'{x[$11] += $21}END{for (a in x) {print x[a], a}}'```  dimana terdapat sebuah array dimana indeksnya berada di baris ke 11 dan nilanya di baris ke 21 dan disana akan dilakukan perulangan dimana perulangan itu dilakukan bertujuan untuk menjumlah niali nay sesuai daat yang ada di region
-   - ```/Central/ ``` dimana bertujuan unutk memanggil dat =a nilai region sentral saja dan yang lain tidak dianggap
-   - ```/home/imanuel/Downloads/Sample-Superstore.tsv | sort -rg | tail -2 | head -1``` ini bertujuan unutk memanggil tempat data tersebut disimpan datang bertujuan untuk mengerutkan dari bawah keatas lalu diambil yang teratas
+   - ```'{x[$11] += $21}END{for (a in x) {print x[a], a}}'```  dimana terdapat sebuah array dimana indeksnya berada di baris ke 11 dan nilanya di baris ke 21 dan disana akan dilakukan perulangan dimana perulangan itu dilakukan bertujuan untuk menjumlah nilai yang sesuai data yang ada di region
+   - ```/Central/ ``` dimana bertujuan untukk memanggil data nilai region sentral saja dan yang lain tidak dianggap
+   - ```/home/imanuel/Downloads/Sample-Superstore.tsv | sort -rg | tail -2 | head -1``` ini bertujuan unutk memanggil tempat data tersebut disimpan datang bertujuan untuk mengurutkan dari bawah keatas lalu diambil yang teratas
 
-![1b](https://user-images.githubusercontent.com/61314890/75606544-6af8e900-5b20-11ea-9594-f6b5e81813ed.png)
+   ![1b](https://user-images.githubusercontent.com/61314890/75606544-6af8e900-5b20-11ea-9594-f6b5e81813ed.png)
 
 
 - 1.c ```awk -F"\t"  '$11 ~ /Texas/ || $11 ~ /Illinois/  {x[$17] += $21} END {for (a in x)  print x[a],a}' /home/imanuel/Downloads/Sample-Superstore.tsv | sort -g | head -10```
@@ -45,7 +45,10 @@ Sama seperti 1a dan 1b dimana fungsi itu yang membedakan adaalh bahwa fungsi yan
 untuk soal b nya soall ini hanya berbeda di fungsi :
    - ```awk -F "\t" ``` berfungsi sebagai separator dan ini akan megubahnya menjadi tab dan data akan dibaca perbaris
    - ```'$11 ~ /Texas/ || $11 ~ /Illinois/ ```dimana ini bertujuan unutk memanggil data dimana nilai yang diaambil hanya berdasarkan state texas dan illinois
-   - ```{x[$17] += $21}``` dimana terdapat sebuah array yang indexnya berada di baris ke 17 dan nilanya di baris ke 
+   - ```{x[$17] += $21}``` dimana terdapat sebuah array yang indexnya berada di baris ke 17 dan nilanya di baris ke 21
+   - ```'{x[$17] += $21}END{for (a in x) {print x[a], a}}' ``` dimana terdapat sebuah array dimana indeksnya berada di baris ke 17 dan nilanya di baris ke 21 dan disana akan dilakukan perulangan dimana perulangan itu dilakukan bertujuan untuk menjumlah nilainya sesuai data yang ada di region
+   - ```/home/imanuel/Downloads/Sample-Superstore.tsv | sort -rg | tail -2 | head -1``` ini bertujuan unutk memanggil tempat data tersebut disimpan datang bertujuan untuk mengerutkan dari bawah keatas lalu diambil yang teratas
+
    
    ![1c](https://user-images.githubusercontent.com/61314890/75608718-bd440500-5b34-11ea-95e4-9852b16a7576.JPG)
 
@@ -139,6 +142,10 @@ done
 #3b
 5 6-23/8 * * 1-5,7 soal3.sh
 
+#pembuatan folder kenangan dan duplicate
+mkdir kenangan
+mkdir duplicate
+
 #3c
 #!/bin/bash
 
@@ -154,15 +161,39 @@ do
                         continue
                 elif [ "${arr[$i]}" = "${arr[$j]}" ]
                 then
-                        mv pdkt_kusuma_$i ./duplicate/duplicate_$i
+                        mv pdkt_kusuma_$i.jpg ./duplicate/duplicate_$i.jpg
                 fi
         done
 done
 for i in {1..28}
 do
-        mv pdkt_kusuma_$i ./kenangan/kenangan_$i
+        mv pdkt_kusuma_$i.jpg ./kenangan/kenangan_$i.jpg
 done
 cp wget.log wget.log.bak
 ```
 ### Penjelasan
+- 3.a
+Untuk download file dari "https://loremflickr.com/320/240/cat" memakai command wget dan disimpan dengan nama pdkt_kusuma_no. No dapat dimasukkan menggunakan perulangan dari 1 sampai 28. Setelah selesai di download, dimasukkan kedalam wget.log
+   - ```wget -O pdkt_kusuma_$i.jpg https://loremflickr.com/320/240/cat -a wget.log``` Untuk download file dari link tersebut dan disave menggunakan nama pdkt_kusuma_(urutan). Menggunakan perulangan untuk urutannya. Lalu dimasukkan ke wget.log datanya.
+   
+   ![3a](https://user-images.githubusercontent.com/61314890/75609234-612faf80-5b39-11ea-837c-99759e2c50a5.JPG)
+
+- 3.b
+ Menjadwalkan script download hanya berjalan tiap 8 jam dari jam 06.05 tiap hari kecuali Sabtu menggunakan crontab
+    - ```5 6-23/8 * * 1-5,7 soal3.sh``` Menjalankan soal3.sh tiap 8 jam dari jam 6 lebih 5 menit tiap hari kecuali Sabtu
+    
+    ![crontab](https://user-images.githubusercontent.com/61314890/75609248-7f95ab00-5b39-11ea-9132-71fc8f256371.JPG)
+
+- Untuk memisahkan foto foto yang sama dan dimasukkan kedalam folder duplicate. Sisanya dimasukkan kedalam folder kenangan. Setelah selesai, dilakukan backup data dengan memasukkan log ke log.bak. Memisahkannya menggunakan location dari file yang ada di wget.log, lalu dibandingkan dengan location file lainnya. 
+   - ```grep "Location" wget.log > location.log``` Mengambil location dari wget.log dan memasukkannya ke location.log
+   - ```readarray arr < location.log``` Membaca array dari location.log
+   - ```[ "${arr[$i]}" = "${arr[$j]}" ]``` Membandingkan 2 array dari location untuk menemukan file yang sama. 
+   - ``` mv pdkt_kusuma_$i.jpg ./duplicate/duplicate_$i.jpg``` Jika menemukan location yang sama, file dipindah ke folder duplicate dan diberi nama duplicate_(urutan).jpg
+   - ```mv pdkt_kusuma_$i.jpg ./kenangan/kenangan_$i.jpg``` Memasukkan sisa file kedalam folder kenangan.
+   - ```cp wget.log wget.log.bak``` Membackup wget.log dengan cara copy wget.log ke wget.log.bak.
+   
+   ![duplicate](https://user-images.githubusercontent.com/61314890/75609298-e74bf600-5b39-11ea-9adb-379ed7b219cc.JPG)
+   ![kenangan](https://user-images.githubusercontent.com/61314890/75609301-e7e48c80-5b39-11ea-99e5-5cea090d10a1.JPG)
+
 ### Kendala
+- 3.c masih belum bisa memisahkan file yang sama ke folder duplicate sehingga masih ada file yang seharusnya tidak masuk ke duplicate tapi malah masuk kedalamnya. Hingga sekarang masih belum bisa memecahkan masalahnya karena tidak menemukan dimana kesalahannya.
